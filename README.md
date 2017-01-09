@@ -5,16 +5,22 @@ Requirements
 ------------
 
 oh-my-zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 brew
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 docker
-  wget https://download.docker.com/mac/stable/Docker.dmg ~/Downloads
+ wget https://download.docker.com/mac/stable/Docker.dmg ~/Downloads
 
 virtualbox
-  open https://www.virtualbox.org/wiki/Downloads
+ open https://www.virtualbox.org/wiki/Downloads
+
+iterm2
+ https://www.iterm2.com/downloads.html
+
+solarized iterm2
+ wget https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors ~/Downloads
 
 Install
 -------
