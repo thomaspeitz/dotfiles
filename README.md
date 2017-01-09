@@ -20,7 +20,7 @@ iterm2
  https://www.iterm2.com/downloads.html
 
 solarized iterm2
- wget https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors ~/Downloads
+ curl https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors > ~/Downloads/solarized-dark.itermcolors
 
 Install
 -------
