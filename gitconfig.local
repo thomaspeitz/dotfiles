@@ -1,0 +1,6 @@
+[user]
+	name = Thomas Peitz
+	email = thomas.peitz@invision.de
+[credential]
+	helper = osxkeychain
+
