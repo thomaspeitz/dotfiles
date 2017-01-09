@@ -1,0 +1,39 @@
+[core]
+	editor = vi
+	excludesfile = ~/.gitignore
+[color]
+  ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[push]
+	default = matching
+[pull]
+	rebase = true
+[merge]
+	ff = only
+[include]
+  path = .gitconfig.local
+[user]
+	name = Thomas Peitz
+	email = you@example.com
+	user = tsupertramp
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
