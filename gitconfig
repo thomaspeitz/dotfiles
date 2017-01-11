@@ -29,7 +29,7 @@
   path = .gitconfig.local
 [user]
 	name = Thomas Peitz
-	email = you@example.com
+	email = tsupertramp90@gmail.com
 	user = tsupertramp
 [diff]
 	tool = vimdiff
