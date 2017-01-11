@@ -10,8 +10,6 @@ source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-export AWS_DEFAULT_PROFILE="default"
-
 source ~/.awsrc
 source ~/.atlas
 source ~/.trellorc
