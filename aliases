@@ -31,6 +31,7 @@ alias env="env|grep -vi 'aws'|grep -vi 'atlas' |grep -vi 'TRELLO'"
 
 k () { kubectl "$@" }
 kp () { kubectl --context prod "$@" }
+ks () { kubectl --context staging "$@" }
 kt () { kubectl --context private "$@" }
 aws_ip () { aws ec2 describe-instances --filter Name=vpc-id,Values=$vpcId --filter Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PublicIpAddress" --output text }
 
