@@ -33,11 +33,11 @@ k () { kubectl "$@" }
 kp () { kubectl --context prod "$@" }
 ks () { kubectl --context staging "$@" }
 kt () { kubectl --context private "$@" }
+ki () { kubectl --context infra.k8s.ivx.cloud "$@" }
 aws_ip () { aws ec2 describe-instances --filter Name=vpc-id,Values=$vpcId --filter Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PublicIpAddress" --output text }
 
 trollo () { trello card create -b 54817dd4e59e280242cbc7c9 -l 54817df8d8c4b4bcde2f154e -n "${1}" -d "${2}" -m thomaspeitz -o json }
 dco () { docker-compose $@ }
 
-t () { tmux "$@" }
 cortex-staging () { knife vault show injixo clients -Fjson | jq ".staging[\"$1\"].client_secret" }
 cortex-production () { knife vault show injixo clients -Fjson | jq ".production[\"$1\"].client_secret" }
