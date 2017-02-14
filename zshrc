@@ -35,9 +35,11 @@ export GOOGLE_APPLICATION_CREDENTIALS=~/.gcloud/nerdswords.json
 
 
 
-# The next line enables shell command completion for gcloud.
-if [ -f /Users/tpeitz/google-cloud-sdk/completion.zsh.inc ]; then
-  source '/Users/tpeitz/google-cloud-sdk/completion.zsh.inc'
-fi
-
 export KOPS_STATE_STORE=s3://kops-kubernetes-state
+export EDITOR='vim'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
