@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
 Plug 'danro/rename.vim'
 Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
@@ -21,5 +22,7 @@ Plug 'fatih/vim-go'
 Plug 'DirDiff.vim'
 Plug 'L9'
 Plug 'FuzzyFinder'
+Plug 'Yggdroot/indentLine'
+Plug 'christianrondeau/vim-base64'
 
 call plug#end()
