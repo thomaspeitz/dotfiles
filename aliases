@@ -29,9 +29,9 @@ b () { bundle install }
 
 alias env="env|grep -vi 'aws'|grep -vi 'atlas' |grep -vi 'TRELLO'"
 
-k () { kubectl "$@" }
-kp () { kubectl --context prod "$@" }
-ks () { kubectl --context staging "$@" }
+k () { command kubectl --context my-own-cluster "$@" }
+kp () { kubectl --context production.k8s.ivx.cloud "$@" }
+ks () { kubectl --context staging.k8s.ivx.cloud "$@" }
 kt () { kubectl --context private "$@" }
 ki () { kubectl --context infra.k8s.ivx.cloud "$@" }
 aws_ip () { aws ec2 describe-instances --filter Name=vpc-id,Values=$vpcId --filter Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PublicIpAddress" --output text }
@@ -41,3 +41,15 @@ dco () { docker-compose $@ }
 
 cortex-staging () { knife vault show injixo clients -Fjson | jq ".staging[\"$1\"].client_secret" }
 cortex-production () { knife vault show injixo clients -Fjson | jq ".production[\"$1\"].client_secret" }
+
+function ethPrice {
+  ethPrice=$(curl -s https://min-api.cryptocompare.com/data/price\?fsym\=ETH\&tsyms\=ETH,EUR |jq .EUR |head -c 7)
+  if [ $(echo -n $ethPrice | cut -d. -f 1) -gt 36 ]
+  then
+    echo -n '{green}'
+  else
+    echo -n '{red}'
+  fi
+  echo -n $ethPrice
+  echo -n €
+}
