@@ -139,3 +139,13 @@ set undodir=/Users/tpeitz/.vimundo/
 au BufRead,BufNewFile *.pde set filetype=arduino
 au BufRead,BufNewFile *.ino set filetype=arduino
 imap öö <Esc>>
+
+" https://github.com/zeit/hyper/issues/1037
+set t_RV=
+
+" Faster update of git changes
+set updatetime=250
+
+" Jump to next Change
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
