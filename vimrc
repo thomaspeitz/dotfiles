@@ -81,15 +81,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" Use the same symbols as TextMate for tabstops and EOLs
-"set listchars=tab:▸\ ,eol:¬
-
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
-
-highlight ExtraWhitespace ctermbg=red guibg=red
-highlight ExtraLines ctermbg=red guibg=red
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufEnter * EnableStripWhitespaceOnSave
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -134,14 +126,6 @@ endif
 set hlsearch
 set undofile
 set undodir=/Users/tpeitz/.vimundo/
-
-" Arduino
-au BufRead,BufNewFile *.pde set filetype=arduino
-au BufRead,BufNewFile *.ino set filetype=arduino
-imap öö <Esc>>
-
-" https://github.com/zeit/hyper/issues/1037
-set t_RV=
 
 " Faster update of git changes
 set updatetime=250
