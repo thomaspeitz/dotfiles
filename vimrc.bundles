@@ -24,5 +24,7 @@ Plug 'L9'
 Plug 'FuzzyFinder'
 Plug 'Yggdroot/indentLine'
 Plug 'christianrondeau/vim-base64'
+Plug 'elixir-lang/vim-elixir'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
