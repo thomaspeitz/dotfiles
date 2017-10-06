@@ -10,12 +10,6 @@ cf () { cd ~/git/chef }
 alias ci="cd ~/infra"
 cgc () { cd ~/git/chef-$1 }
 gitsearch() { git grep $1 $(git rev-list --all) }
-ks () { kitchen setup $1 }
-kc () { kitchen converge $1 }
-kv () { kitchen verify $1 }
-kd () { kitchen destroy $1 }
-kl() { kitchen list }
-klo () { kitchen login $1}
 
 c () { chef exec "$@" }
 cks () { chef exec kitchen setup "$@" }
@@ -29,11 +23,13 @@ b () { bundle install }
 
 alias env="env|grep -vi 'aws'|grep -vi 'atlas' |grep -vi 'TRELLO'"
 
-k () { command kubectl --context my-own-cluster "$@" }
-kp () { kubectl --context production.k8s.ivx.cloud "$@" }
-ks () { kubectl --context staging.k8s.ivx.cloud "$@" }
-kt () { kubectl --context private "$@" }
-ki () { kubectl --context infra.k8s.ivx.cloud "$@" }
+alias ks="kubectl --context staging-177.k8s.ivx.cloud"
+alias kp="kubectl --context production-173.k8s.ivx.cloud"
+alias ki="kubectl --context infra-174.k8s.ivx.cloud"
+alias kin="kubectl --context infra-174.k8s.ivx.cloud"
+
+alias km="kubectl --context minikube"
+
 aws_ip () { aws ec2 describe-instances --filter Name=vpc-id,Values=$vpcId --filter Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PublicIpAddress" --output text }
 
 trollo () { trello card create -b 54817dd4e59e280242cbc7c9 -l 54817df8d8c4b4bcde2f154e -n "${1}" -d "${2}" -m thomaspeitz -o json }
@@ -53,3 +49,5 @@ function ethPrice {
   echo -n $ethPrice
   echo -n €
 }
+
+alias curl="/usr/bin/curl -A \"Thomas Macbook\" $@"
