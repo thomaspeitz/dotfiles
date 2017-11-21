@@ -23,10 +23,12 @@ b () { bundle install }
 
 alias env="env|grep -vi 'aws'|grep -vi 'atlas' |grep -vi 'TRELLO'"
 
-alias ks="kubectl --context staging-177.k8s.ivx.cloud"
-alias kp="kubectl --context production-173.k8s.ivx.cloud"
-alias ki="kubectl --context infra-174.k8s.ivx.cloud"
-alias kin="kubectl --context infra-174.k8s.ivx.cloud"
+alias ks="kubectl --context staging"
+alias ksn="kubectl --context staging-new"
+alias kp="kubectl --context production"
+alias kpn="kubectl --context production-new"
+alias ki="kubectl --context infra"
+alias kin="kubectl --context infra-new"
 
 alias km="kubectl --context minikube"
 
