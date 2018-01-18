@@ -30,6 +30,9 @@ alias kpn="kubectl --context production-new"
 alias ki="kubectl --context infra"
 alias kin="kubectl --context infra-new"
 
+alias kt="kubectl --context thomas"
+alias ktn="kubectl --context thomas-new"
+
 alias km="kubectl --context minikube"
 
 aws_ip () { aws ec2 describe-instances --filter Name=vpc-id,Values=$vpcId --filter Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PublicIpAddress" --output text }
@@ -53,3 +56,5 @@ function ethPrice {
 }
 
 alias curl="/usr/bin/curl -A \"Thomas Macbook\" $@"
+
+cortex () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context production exec -it $(kubectl --context $1 get pods -l name=cortex-injixo -o jsonpath="{.items[].metadata.name}") -c cortex-injixo bundle exec rails c }
