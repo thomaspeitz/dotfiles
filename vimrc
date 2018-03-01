@@ -48,10 +48,9 @@ if &term =~ "xterm" || &term =~ "screen"
  let g:CommandTSelectPrevMap = ['<C-k>', '<ESC>OA']
 endif
 
-" CtrlP
-nnoremap <silent> <leader>t :CtrlP<CR>
-nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-let g:ctrlp_show_hidden = 1
+" FZF
+nnoremap <silent> <leader>t :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 
 " Shortcut to rapidly toggle `set list`
 nmap <leader>l :set list!<CR>
