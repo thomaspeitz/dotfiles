@@ -80,7 +80,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-autocmd BufEnter * EnableStripWhitespaceOnSave
+" autocmd BufEnter * EnableStripWhitespaceOnSave
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -93,7 +93,7 @@ autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd FileType eruby,json,yaml,html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd FileType ruby setlocal colorcolumn=79 shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd FileType ruby,eruby,json,yaml,html autocmd BufWritePre <buffer> :%s/\s\+$//e
-autocmd FileType markdown setlocal spell tw=100 autoindent colorcolumn=0 linebreak wrap
+"autocmd FileType markdown setlocal spell tw=100 autoindent colorcolumn=0 linebreak wrap
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -132,3 +132,7 @@ set updatetime=250
 " Jump to next Change
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
+
+" Remove annoying ** bold ** hiding of special chars in markdown
+autocmd FileType markdown let g:indentLine_enabled=0
+au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
