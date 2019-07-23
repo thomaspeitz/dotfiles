@@ -20,28 +20,38 @@ ckl() { chef exec kitchen list "$@" }
 cklo () { chef exec kitchen login "$@"}
 
 b () { bundle install }
+bold () {  bundle _1.17.2_ install }
 
 alias env="env|grep -vi 'aws'|grep -vi 'atlas' |grep -vi 'TRELLO'"
 
+alias tf="terraform"
+alias tfp="terraform plan -out .plan"
+alias tfa="terraform apply .plan"
+alias tfi="terraform init"
+
 alias ks="kubectl --context staging"
 alias ksn="kubectl --context staging-new"
+alias kso="kubectl --context staging-old"
 alias kp="kubectl --context production"
 alias kpn="kubectl --context production-new"
+alias kpo="kubectl --context production-old"
 alias ki="kubectl --context infra"
 alias kin="kubectl --context infra-new"
+alias ko="kubectl --context openfaas"
+alias k="kubectl --context openfaas"
+
+alias kx="kubectl --context xcon"
+alias kz="kubectl --context azure"
 
 alias kt="kubectl --context thomas"
-alias ktn="kubectl --context thomas-new"
+
+alias kl="kubectl --context lanparty"
 
 alias km="kubectl --context minikube"
 
 aws_ip () { aws ec2 describe-instances --filter Name=vpc-id,Values=$vpcId --filter Name=tag:Name,Values=$1 --query "Reservations[].Instances[].PublicIpAddress" --output text }
 
-trollo () { trello card create -b 54817dd4e59e280242cbc7c9 -l 54817df8d8c4b4bcde2f154e -n "${1}" -d "${2}" -m thomaspeitz -o json }
 dco () { docker-compose $@ }
-
-cortex-staging () { knife vault show injixo clients -Fjson | jq ".staging[\"$1\"].client_secret" }
-cortex-production () { knife vault show injixo clients -Fjson | jq ".production[\"$1\"].client_secret" }
 
 function ethPrice {
   ethPrice=$(curl -s https://min-api.cryptocompare.com/data/price\?fsym\=ETH\&tsyms\=ETH,EUR |jq .EUR |head -c 7)
@@ -57,4 +67,15 @@ function ethPrice {
 
 alias curl="/usr/bin/curl -A \"Thomas Macbook\" $@"
 
-cortex () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context production exec -it $(kubectl --context $1 get pods -l name=cortex-injixo -o jsonpath="{.items[].metadata.name}") -c cortex-injixo bundle exec rails c }
+cortex () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=cortex-injixo -o jsonpath="{.items[].metadata.name}") -c cortex-injixo bundle exec rails c }
+
+support () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=support -o jsonpath="{.items[].metadata.name}") -c support bundle exec rails c }
+
+helm-staging  () { helm $@ --tls --tls-ca-cert ~/Infra/server_certificates/EasyRSA-2.2.2/keys/ca.cert.pem --tls-cert ~/Infra/server_certificates/EasyRSA-2.2.2/keys/helm-tiller.staging.ivx.cloud.crt --tls-key ~/Infra/server_certificates/EasyRSA-2.2.2/keys/helm-tiller.staging.ivx.cloud.key --kube-context staging --tiller-namespace helm }
+helm-production  () { helm $@ --tls --tls-ca-cert ~/Infra/server_certificates/EasyRSA-2.2.2/keys/ca.cert.pem --tls-cert ~/Infra/server_certificates/EasyRSA-2.2.2/keys/helm-tiller.production.ivx.cloud.crt --tls-key ~/Infra/server_certificates/EasyRSA-2.2.2/keys/helm-tiller.production.ivx.cloud.key --kube-context production --tiller-namespace helm }
+
+alias kubesec-encrypt="kubesec encrypt --key=75B240BE8E2FB53C7DCA4CF478711674974C8F23 --key=5E0832A41DCD0FB11C07EF2F9E58C64809FA6916"
+
+alias kubesec-encrypt-private="kubesec encrypt --key=75B240BE8E2FB53C7DCA4CF478711674974C8F23"
+
+kubesec-reencrypt() { kubesec decrypt ${1} > ${1/yml.crypt/yml}; kubesec-encrypt ${1/yml.crypt/yml} > ${1} ;rm ${1/yml.crypt/yml} }
