@@ -3,46 +3,25 @@ ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 CASE_SENSITIVE="true"
-plugins=(berkshelf bundler git history rbenv knife knife_ssh osx thor vagrant kubectl)
+plugins=(git history osxgpg-agent)
 
 export EDITOR=vi
+
 source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-source ~/.awsrc
+source ~/.githubrc
 
-# SSH Agent
-ssh-add ~/.ssh/tpeitz.pem &>/dev/null
-ssh-add ~/.ssh/devops.pem &>/dev/null
-ssh-add ~/.ssh/devops-us.pem &>/dev/null
-
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:$HOME/git/chef/script:$HOME/google-cloud-sdk/bin
+export GOPATH=/Users/tpeitz/git/golang
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$GOPATH/bin:$HOME/git/infra/scripts:$HOME/google-cloud-sdk/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
-source /usr/local/share/zsh/site-functions/_aws
-
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
-
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-export GOOGLE_APPLICATION_CREDENTIALS=~/.gcloud/nerdswords.json
+export PATH="$HOME/.exenv/bin:$PATH"
 
 export KOPS_STATE_STORE=s3://kops-kubernetes-state
 export EDITOR='vim'
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 setopt complete_aliases
-
-source <(kubectl completion zsh)
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -53,6 +32,6 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-eval "$(exenv init -)"
-
-export GOPATH=/Users/tpeitz/git/golang
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+eval "$(rbenv init -)"
