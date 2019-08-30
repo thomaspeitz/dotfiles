@@ -29,8 +29,8 @@
   path = .gitconfig.local
 [user]
 	name = Thomas Peitz
-	email = tsupertramp90@gmail.com
-	user = tsupertramp
+	email = thomas.peitz@nerdswords.de
+	user = thomaspeitz
 	signingkey = 75B240BE8E2FB53C7DCA4CF478711674974C8F23
 [diff]
 	tool = vimdiff

@@ -7,7 +7,7 @@ set backspace=2   " Backspace deletes like most programs in insert mode
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
-set history=50
+set history=500
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
@@ -21,11 +21,7 @@ set numberwidth=1
 " leader
 let mapleader = ","
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
-  syntax on
-endif
+syntax on
 
 " Color scheme
 let g:solarized_termcolors=256
@@ -36,20 +32,9 @@ let g:airline_theme = 'bubblegum'
 
 filetype plugin indent on
 
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-if &term =~ "xterm" || &term =~ "screen"
- let g:CommandTCancelMap = ['<C-c>', '<ESC>']
- let g:CommandTSelectNextMap = ['<C-j>', '<ESC>OB']
- let g:CommandTSelectPrevMap = ['<C-k>', '<ESC>OA']
-endif
-
 " FZF
 nnoremap <silent> <leader>t :Files<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
 " Shortcut to rapidly toggle `set list`
@@ -80,20 +65,14 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" autocmd BufEnter * EnableStripWhitespaceOnSave
-
-" Softtabs, 2 spaces
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" Set to auto read when a file is changed from the outside
-"set autoread
 autocmd Filetype gitcommit setlocal spell textwidth=72
 autocmd FileType eruby,json,yaml,html setlocal shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd FileType ruby setlocal colorcolumn=79 shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 autocmd FileType ruby,eruby,json,yaml,html autocmd BufWritePre <buffer> :%s/\s\+$//e
-"autocmd FileType markdown setlocal spell tw=100 autoindent colorcolumn=0 linebreak wrap
 
 " Open new split panes to right and bottom, which feels more natural
 set splitbelow
@@ -115,12 +94,6 @@ let g:go_highlight_build_constraints = 1
 
 " vim json settings
 let g:vim_json_warnings = 1
-let g:vim_json_syntax_conceal = 1
-
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
 
 set hlsearch
 set undofile
