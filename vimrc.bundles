@@ -24,5 +24,6 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
+Plug 'vim-scripts/groovy.vim'
 
 call plug#end()
