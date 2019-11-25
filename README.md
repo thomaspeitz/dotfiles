@@ -38,7 +38,7 @@ Fonts
 Secrets
 ----------------------------
 Zip them all:
- zip -r secrets.zip .ssh .awsrc .atlas .kube/config .gcloud .pgpass
+ zip -r secrets.zip .aws .ssh .kube/config .gcloud .pgpass
 
 Put them in 1Password
  uuencode secrets.zip secrets.zip|pbcopy
