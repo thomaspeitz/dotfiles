@@ -15,19 +15,37 @@ docker
 virtualbox
  open https://www.virtualbox.org/wiki/Downloads
 
-iterm2
- https://www.iterm2.com/downloads.html
+spotify
+ open https://www.spotify.com/de/download/
 
-solarized iterm2
- curl https://raw.githubusercontent.com/altercation/solarized/master/iterm2-colors-solarized/Solarized%20Dark.itermcolors > ~/Downloads/solarized-dark.itermcolors
+terminal
+ wget https://raw.githubusercontent.com/tomislav/osx-terminal.app-colors-solarized/master/Solarized%20Dark.terminal
+ wget https://raw.githubusercontent.com/tomislav/osx-terminal.app-colors-solarized/master/Solarized%20Light.terminal
+ wget https://raw.githubusercontent.com/lysyi3m/macos-terminal-themes/master/schemes/Solarized%20Darcula.terminal
+ wget https://github.com/source-foundry/Hack/releases/download/v3.003/Hack-v3.003-ttf.zip
 
 Install
 -------
  brew bundle dotfiles/Brewfile
  rcup -d dotfiles -x README.md -x LICENSE
 
+ASDF
+------
+```
+asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git  
+asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+asdf plugin-add python
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring  
+```
+
 Vim
 ----------------------------
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 :PlugInstall
 
 Fonts
@@ -38,7 +56,6 @@ Fonts
 Secrets
 ----------------------------
 Zip them all:
- zip -r secrets.zip .aws .ssh .kube/config .gcloud .pgpass
+ zip -r secrets.zip .aws .ssh .kube/config .gcloud .pgpass .gpg
 
-Put them in 1Password
- uuencode secrets.zip secrets.zip|pbcopy
+Put them in 1Password as file.
