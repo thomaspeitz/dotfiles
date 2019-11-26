@@ -49,3 +49,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
 #. ~/git/cloud-ops/scripts/_pgcli-ivx.zsh
 
+# Do not need java for erlang asdf installation
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
