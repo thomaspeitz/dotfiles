@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 CASE_SENSITIVE="true"
-plugins=(git history osxgpg-agent)
+plugins=(git history gpg-agent)
 
 export EDITOR=vi
 
@@ -11,10 +11,8 @@ source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-source ~/.githubrc
-
-export GOPATH=/Users/tpeitz/git/golang/packages
-export GOROOT=/Users/tpeitz/git/golang
+export GOPATH=$HOME/git/golang/packages
+export GOROOT=$HOME/git/golang
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$GOROOT/bin:$HOME/git/infra/scripts:$HOME/google-cloud-sdk/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH="$HOME/.exenv/bin:$PATH"
