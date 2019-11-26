@@ -11,9 +11,9 @@ source $ZSH/oh-my-zsh.sh
 
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-export GOPATH=$HOME/git/golang/packages
-export GOROOT=$HOME/git/golang
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$GOROOT/bin:$HOME/git/infra/scripts:$HOME/google-cloud-sdk/bin
+export GOPATH=$HOME/git/golang
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/git/infra/scripts:$HOME/google-cloud-sdk/bin
+export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
@@ -47,5 +47,5 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 . /usr/local/opt/asdf/asdf.sh
 . /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-. ~/git/cloud-ops/scripts/_pgcli-ivx.zsh
+#. ~/git/cloud-ops/scripts/_pgcli-ivx.zsh
 
