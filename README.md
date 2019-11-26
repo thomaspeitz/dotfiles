@@ -33,6 +33,7 @@ ASDF
 ------
 ```
 asdf plugin-add ruby https://github.com/asdf-vm/asdf-ruby.git
+
 asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
 asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git
@@ -41,6 +42,8 @@ asdf plugin-add python
 
 asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git  
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring  
+
+for a in ruby golang elixir erlang kops python nodejs;do asdf list-all $a | grep -v "[a-z]" | tail -n 1 | xargs asdf install $a;done
 ```
 
 Vim
