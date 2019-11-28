@@ -37,8 +37,10 @@ nnoremap <silent> <leader>t :Files<CR>
 nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
-" Shortcut to rapidly toggle `set list`
-nmap <leader>l :set list!<CR>
+" vim-rubytest
+map <Leader>r <Plug>RubyTestRun
+map <Leader>R <Plug>RubyFileRun
+" leader small L run last ruby test
 
 " Switch between the last two files
 nmap <leader><leader> <c-^>
@@ -100,7 +102,7 @@ let g:vim_json_warnings = 1
 
 set hlsearch
 set undofile
-set undodir=/Users/tpeitz/.vimundo/
+set undodir=$HOME/.vimundo/
 
 " Faster update of git changes
 set updatetime=250
