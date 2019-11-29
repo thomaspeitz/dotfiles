@@ -83,7 +83,7 @@ Secrets
 -------
 Zip them all:
 ```
-zip -r secrets.zip .aws .ssh .kube/config .gcloud .pgpass .gpg
+zip -r secrets.zip .aws .ssh .kube/config .gcloud .pgpass .gnupg
 ```
 
 Put them in 1Password as file.
