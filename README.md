@@ -28,6 +28,11 @@ spotify
 open https://www.spotify.com/de/download/
 ```
 
+xcode
+```
+xcode-select --install
+```
+
 Brew
 ----
 ```
