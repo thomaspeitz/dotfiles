@@ -2,10 +2,16 @@
 ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
-CASE_SENSITIVE="true"
-plugins=(git history gpg-agent)
 SHOW_AWS_PROMPT=false
 SHOW_TWITTER_PROMPT=false
+plugins=(git history gpg-agent aws)
+
+# Ignore gitignore files during fzf search
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+# To apply the command to CTRL-T as well
+export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 export EDITOR=vi
 
@@ -53,3 +59,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # Do not need java for erlang asdf installation
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+export PATH="/usr/local/opt/gettext/bin:$PATH"
