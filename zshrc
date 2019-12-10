@@ -4,6 +4,8 @@ DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 CASE_SENSITIVE="true"
 plugins=(git history gpg-agent)
+SHOW_AWS_PROMPT=false
+SHOW_TWITTER_PROMPT=false
 
 export EDITOR=vi
 
