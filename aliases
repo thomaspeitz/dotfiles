@@ -11,13 +11,25 @@ alias tfp="terraform plan -out .plan"
 alias tfa="terraform apply .plan"
 alias tfi="terraform init"
 
-alias ks="kubectl --context staging"
-alias ksn="kubectl --context staging-new"
-alias kso="kubectl --context staging-old"
-alias kp="kubectl --context production"
-alias kpn="kubectl --context production-new"
-alias kpo="kubectl --context production-old"
-alias ki="kubectl --context infra"
+for c in staging production infra thomas
+do
+  alias k${c:0:1}="kubectl --context ${c}"
+
+  for ns in default monitoring kube-system nginx-ingress
+  do
+    if [ "$ns" != "default" ]
+    then
+      shortcut=${ns:0:1}
+    fi
+
+    alias k${c:0:1}${shortcut}="kubectl --context ${c} --namespace ${ns}"
+    alias k${c:0:1}${shortcut}gp="kubectl --context ${c} --namespace ${ns} get po"
+    alias k${c:0:1}${shortcut}l="kubectl --context ${c} --namespace ${ns} logs"
+    alias k${c:0:1}${shortcut}e="kubectl --context ${c} --namespace ${ns} exec -it"
+    alias k${c:0:1}${shortcut}p="kubectl --context ${c} --namespace ${ns} port-forward"
+  done
+done
+
 alias kin="kubectl --context infra-new"
 
 alias kt="kubectl --context thomas"

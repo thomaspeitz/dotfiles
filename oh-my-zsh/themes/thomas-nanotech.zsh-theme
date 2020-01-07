@@ -1,6 +1,4 @@
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-
-PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info) $(git_prompt_info) $(kube_ps1) [%f '
+PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info) $(git_prompt_info) [%f '
 RPROMPT='%F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
 
 if [ "$SHOW_TWITTER_PROMPT" != false ]; then
