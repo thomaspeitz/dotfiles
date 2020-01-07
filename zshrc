@@ -3,8 +3,8 @@ ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 SHOW_AWS_PROMPT=false
-SHOW_TWITTER_PROMPT=false
-plugins=(git history gpg-agent aws)
+SHOW_TWITTER_PROMPT=true
+plugins=(git gpg-agent aws zsh-autosuggestions kubectl)
 
 # Ignore gitignore files during fzf search
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -12,8 +12,6 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 # To apply the command to CTRL-T as well
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-export EDITOR=vi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,23 +38,21 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 
 . /usr/local/opt/asdf/asdf.sh
-. /usr/local/opt/asdf/etc/bash_completion.d/asdf.bash
-#. ~/git/cloud-ops/scripts/_pgcli-ivx.zsh
 
 # Do not need java for erlang asdf installation
 export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
+rm -f ~/.zcompdump; compinit
+
+complete -F __start_kubectl k
+complete -F __start_kubectl ks
+complete -F __start_kubectl ki
+complete -F __start_kubectl kp
