@@ -1,8 +1,7 @@
-prompt_aws(){}
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 
-PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info) $(git_prompt_info) [%f '
+PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info) $(git_prompt_info) $(kube_ps1) [%f '
 RPROMPT='%F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
-#RPROMPT=$'%F{blue} %F$(cat ~/tmp/eth-price) %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
 
 if [ "$SHOW_TWITTER_PROMPT" != false ]; then
   RPROMPT='%F{blue}@it_supertramp '"$RPROMPT"
