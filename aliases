@@ -15,18 +15,22 @@ for c in staging production infra thomas
 do
   alias k${c:0:1}="kubectl --context ${c}"
 
-  for ns in default monitoring kube-system nginx-ingress
+  for ns in default monitoring kube-system "nginx-ingress"
   do
+    shortcut=""
+    namespace=""
+
     if [ "$ns" != "default" ]
     then
       shortcut=${ns:0:1}
+      namespace="--namespace ${ns}"
     fi
 
-    alias k${c:0:1}${shortcut}="kubectl --context ${c} --namespace ${ns}"
-    alias k${c:0:1}${shortcut}gp="kubectl --context ${c} --namespace ${ns} get po"
-    alias k${c:0:1}${shortcut}l="kubectl --context ${c} --namespace ${ns} logs"
-    alias k${c:0:1}${shortcut}e="kubectl --context ${c} --namespace ${ns} exec -it"
-    alias k${c:0:1}${shortcut}p="kubectl --context ${c} --namespace ${ns} port-forward"
+    alias k${c:0:1}${shortcut}="kubectl --context ${c} $namespace"
+    alias k${c:0:1}${shortcut}gp="kubectl --context ${c} $namespace get po"
+    alias k${c:0:1}${shortcut}l="kubectl --context ${c} $namespace logs"
+    alias k${c:0:1}${shortcut}e="kubectl --context ${c} $namespace exec -it"
+    alias k${c:0:1}${shortcut}p="kubectl --context ${c} $namespace port-forward"
   done
 done
 
