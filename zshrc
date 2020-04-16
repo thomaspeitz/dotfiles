@@ -4,7 +4,9 @@ DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 SHOW_AWS_PROMPT=false
 SHOW_TWITTER_PROMPT=true
-plugins=(git gpg-agent aws zsh-autosuggestions kubectl)
+plugins=(git gpg-agent aws zsh-autosuggestions kubectl history-substring-search)
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
 
 # Ignore gitignore files during fzf search
 export FZF_DEFAULT_COMMAND='fd --type f'
@@ -23,6 +25,7 @@ export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export PATH="$HOME/.exenv/bin:$PATH"
 export PATH="/usr/local/opt/openssl/bin:$PATH"
+export PATH="/Users/tpeitz/.asdf/installs/rust/nightly/bin:$PATH"
 
 export KOPS_STATE_STORE=s3://kops-kubernetes-state
 export EDITOR='vim'
@@ -51,8 +54,4 @@ if type brew &>/dev/null; then
 fi
 
 rm -f ~/.zcompdump; compinit
-
-complete -F __start_kubectl k
-complete -F __start_kubectl ks
-complete -F __start_kubectl ki
-complete -F __start_kubectl kp
+source /Users/tpeitz/.asdf/installs/rust/nightly/env

@@ -26,7 +26,7 @@ syntax on
 " Color scheme
 let g:solarized_termcolors=256
 colorscheme solarized
-set background=dark
+set background=light
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'bubblegum'
 
@@ -36,6 +36,10 @@ filetype plugin indent on
 nnoremap <silent> <leader>t :Files<CR>
 nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+
+" vim-fugitive
+nnoremap <silent> <leader>s :Gstatus<CR>
+command GpushF :Gpush --force-with-lease
 
 " vim-rubytest
 map <Leader>r <Plug>RubyTestRun

@@ -2,7 +2,7 @@ PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info) $(git_prompt_info) [%f '
 RPROMPT='%F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
 
 if [ "$SHOW_TWITTER_PROMPT" != false ]; then
-  RPROMPT='%F{blue}@it_supertramp '"$RPROMPT"
+  RPROMPT='%F{blue}@tpeitz_dus '"$RPROMPT"
 fi
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{154}±|%f%F{124}"
