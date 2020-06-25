@@ -33,13 +33,6 @@ export EDITOR='vim'
 setopt complete_aliases
 
 export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
 
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 
@@ -55,3 +48,9 @@ fi
 
 rm -f ~/.zcompdump; compinit
 source /Users/tpeitz/.asdf/installs/rust/nightly/env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/tpeitz/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tpeitz/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/tpeitz/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tpeitz/google-cloud-sdk/completion.zsh.inc'; fi

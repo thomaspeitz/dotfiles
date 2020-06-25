@@ -11,11 +11,12 @@ alias tfp="terraform plan -out .plan"
 alias tfa="terraform apply .plan"
 alias tfi="terraform init"
 
-for c in staging production infra thomas
+for c in staging production infra thomas logging
 do
   alias k${c:0:1}="kubectl --context ${c}"
+  alias k2${c:0:1}="kubectl --context ${c}-new"
 
-  for ns in default monitoring kube-system "nginx-ingress" linkerd "cert-manager"
+  for ns in default monitoring kube-system "nginx-ingress" oauth "cert-manager" velero
   do
     shortcut=""
     namespace=""
@@ -31,23 +32,6 @@ do
     alias k${c:0:1}${shortcut}l="kubectl --context ${c} $namespace logs"
     alias k${c:0:1}${shortcut}e="kubectl --context ${c} $namespace exec -it"
     alias k${c:0:1}${shortcut}p="kubectl --context ${c} $namespace port-forward"
-  done
-done
-
-for c in staging production infra thomas
-do
-  alias k2${c:0:1}="kubectl --context ${c}-new"
-
-  for ns in default monitoring kube-system "nginx-ingress" linkerd "cert-manager"
-  do
-    shortcut=""
-    namespace=""
-
-    if [ "$ns" != "default" ]
-    then
-      shortcut=${ns:0:1}
-      namespace="--namespace ${ns}"
-    fi
 
     alias k2${c:0:1}${shortcut}="kubectl --context ${c}-new $namespace"
     alias k2${c:0:1}${shortcut}gp="kubectl --context ${c}-new $namespace get po"
@@ -56,8 +40,6 @@ do
     alias k2${c:0:1}${shortcut}p="kubectl --context ${c}-new $namespace port-forward"
   done
 done
-
-alias kin="kubectl --context infra-new"
 
 alias kt="kubectl --context thomas"
 
@@ -77,3 +59,10 @@ kubesec-reencrypt() { kubesec decrypt ${1} > ${1/yml.crypt/yml}; kubesec-encrypt
 alias watch='watch '
 
 alias hack-kai="ssh tpeitz@10.10.3.1"
+
+dockertags () {
+    local image="${1}"
+
+    wget -q https://registry.hub.docker.com/v1/repositories/"${image}"/tags -O - \
+        | tr -d '[]" ' | tr '}' '\n' | awk -F: '{print $3}'
+}
