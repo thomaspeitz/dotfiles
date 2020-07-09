@@ -1,2 +1,5 @@
-golang 1.13
-kops 1.14.0
+golang 1.14
+kops v1.17.1
+ruby 2.7.1
+kubectl 1.18.5
+terraform 0.12.28
