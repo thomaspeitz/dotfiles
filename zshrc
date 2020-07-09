@@ -4,7 +4,7 @@ DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 SHOW_AWS_PROMPT=false
 SHOW_TWITTER_PROMPT=true
-plugins=(git gpg-agent aws zsh-autosuggestions kubectl history-substring-search)
+plugins=(git gpg-agent aws kubectl history-substring-search)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
 
@@ -47,7 +47,6 @@ if type brew &>/dev/null; then
 fi
 
 rm -f ~/.zcompdump; compinit
-source /Users/tpeitz/.asdf/installs/rust/nightly/env
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/tpeitz/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tpeitz/google-cloud-sdk/path.zsh.inc'; fi
