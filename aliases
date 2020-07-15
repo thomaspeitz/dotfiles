@@ -11,33 +11,35 @@ alias tfp="terraform plan -out .plan"
 alias tfa="terraform apply .plan"
 alias tfi="terraform init"
 
-for c in staging production infra thomas logging
+for kubectl in k k2
 do
-  alias k${c:0:1}="kubectl --context ${c}"
-  alias k2${c:0:1}="kubectl --context ${c}-new"
-
-  for ns in default monitoring kube-system "nginx-ingress" oauth "cert-manager" velero
+  for c in staging production infra thomas logging experiment
   do
-    shortcut=""
-    namespace=""
-
-    if [ "$ns" != "default" ]
+    if [ $kubectl = "k2" ]
     then
-      shortcut=${ns:0:1}
-      namespace="--namespace ${ns}"
+      c="${c}-new"
     fi
 
-    alias k${c:0:1}${shortcut}="kubectl --context ${c} $namespace"
-    alias k${c:0:1}${shortcut}gp="kubectl --context ${c} $namespace get po"
-    alias k${c:0:1}${shortcut}l="kubectl --context ${c} $namespace logs"
-    alias k${c:0:1}${shortcut}e="kubectl --context ${c} $namespace exec -it"
-    alias k${c:0:1}${shortcut}p="kubectl --context ${c} $namespace port-forward"
+    alias ${kubectl}${c:0:1}="kubectl --context ${c}"
 
-    alias k2${c:0:1}${shortcut}="kubectl --context ${c}-new $namespace"
-    alias k2${c:0:1}${shortcut}gp="kubectl --context ${c}-new $namespace get po"
-    alias k2${c:0:1}${shortcut}l="kubectl --context ${c}-new $namespace logs"
-    alias k2${c:0:1}${shortcut}e="kubectl --context ${c}-new $namespace exec -it"
-    alias k2${c:0:1}${shortcut}p="kubectl --context ${c}-new $namespace port-forward"
+    for ns in default monitoring kube-system "nginx-ingress" oauth "cert-manager" velero
+    do
+      shortcut=""
+      namespace=""
+
+      if [ "$ns" != "default" ]
+      then
+        shortcut=${ns:0:1}
+        namespace="--namespace ${ns}"
+      fi
+
+      alias ${kubectl}${c:0:1}${shortcut}="kubectl --context ${c} $namespace"
+      alias ${kubectl}${c:0:1}${shortcut}gp="kubectl --context ${c} $namespace get po"
+      alias ${kubectl}${c:0:1}${shortcut}dp="kubectl --context ${c} $namespace describe po"
+      alias ${kubectl}${c:0:1}${shortcut}l="kubectl --context ${c} $namespace logs"
+      alias ${kubectl}${c:0:1}${shortcut}e="kubectl --context ${c} $namespace exec -it"
+      alias ${kubectl}${c:0:1}${shortcut}p="kubectl --context ${c} $namespace port-forward"
+    done
   done
 done
 
@@ -57,8 +59,6 @@ kubesec-reencrypt() { kubesec decrypt ${1} > ${1/yml.crypt/yml}; kubesec-encrypt
 
 # Allow alias watching
 alias watch='watch '
-
-alias hack-kai="ssh tpeitz@10.10.3.1"
 
 dockertags () {
     local image="${1}"
