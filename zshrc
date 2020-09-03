@@ -49,7 +49,7 @@ fi
 rm -f ~/.zcompdump; compinit
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/tpeitz/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tpeitz/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/tpeitz/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tpeitz/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

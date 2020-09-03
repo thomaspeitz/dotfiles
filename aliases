@@ -2,7 +2,7 @@ alias ber="bundle exec rspec --color --order rand"
 alias glop="git log -30 --graph --pretty=format:'%h %ad %s (%an)' --date=short"
 alias md5sum="md5 -r"
 cg () { cd ~/git/$1 }
-cgt () { cd ~/git/thomas/ }
+ck () { cd ~/git/k8s-definitions }
 
 b () { bundle install }
 
@@ -39,6 +39,8 @@ do
       alias ${kubectl}${c:0:1}${shortcut}l="kubectl --context ${c} $namespace logs"
       alias ${kubectl}${c:0:1}${shortcut}e="kubectl --context ${c} $namespace exec -it"
       alias ${kubectl}${c:0:1}${shortcut}p="kubectl --context ${c} $namespace port-forward"
+      alias ${kubectl}${c:0:1}${shortcut}gc="kubectl --context ${c} $namespace get certs -A"
+      alias ${kubectl}${c:0:1}${shortcut}gn="kubectl --context ${c} $namespace get nodes"
     done
   done
 done

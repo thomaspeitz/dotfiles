@@ -118,3 +118,8 @@ nmap [h <Plug>GitGutterPrevHunk
 " Remove annoying ** bold ** hiding of special chars in markdown
 autocmd FileType markdown let g:indentLine_enabled=0
 au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
+
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
