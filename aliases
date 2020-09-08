@@ -47,8 +47,6 @@ done
 
 alias kt="kubectl --context thomas"
 
-alias curl="/usr/bin/curl -A \"Thomas Macbook\" $@"
-
 cortex () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=cortex-injixo -o jsonpath="{.items[].metadata.name}") -c cortex-injixo bundle exec rails c }
 
 support () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=support -o jsonpath="{.items[].metadata.name}") -c support bundle exec rails c }
