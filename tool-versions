@@ -1,7 +1,9 @@
-golang 1.14
-kops v1.18.0
+golang 1.15
+kops v1.18.2
+nodejs 14.8.0
 ruby 2.7.1
-kubectl 1.18.8
-terraform 0.12.29
+kubectl 1.20.0
+terraform 0.14.0
 postgres 11.8
 python 3.8.5
+java openjdk-15
