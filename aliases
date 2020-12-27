@@ -13,7 +13,7 @@ alias tfi="terraform init"
 
 for kubectl in k k2
 do
-  for c in staging production infra thomas logging experiment
+  for c in staging production infra thomas logging experiment minikube
   do
     if [ $kubectl = "k2" ]
     then
@@ -22,7 +22,7 @@ do
 
     alias ${kubectl}${c:0:1}="kubectl --context ${c}"
 
-    for ns in default monitoring kube-system "nginx-ingress" oauth "cert-manager" velero
+    for ns in default monitoring kube-system "nginx-ingress" oauth "cert-manager" velero linkerd
     do
       shortcut=""
       namespace=""
