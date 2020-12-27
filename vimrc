@@ -33,8 +33,8 @@ let g:airline_theme = 'bubblegum'
 filetype plugin indent on
 
 " FZF
-nnoremap <silent> <leader>t :Files<CR>
-nnoremap <silent> <leader>g :GFiles<CR>
+nnoremap <silent> <leader>t :FZF<CR>
+nnoremap <silent> <leader>g :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'window': { 'width': 0.9, 'height': 0.6 }})<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
 " vim-fugitive
@@ -123,3 +123,6 @@ au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
+
+" Golang autoimport on save
+let g:go_fmt_command = "goimports"

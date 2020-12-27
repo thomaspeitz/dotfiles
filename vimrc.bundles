@@ -8,6 +8,7 @@ Plug 'christianrondeau/vim-base64', { 'tag': 'v1.1' }
 Plug 'godlygeek/tabular'
 Plug 'janx/vim-rubytest'
 Plug 'junegunn/fzf.vim'
+Plug 'fatih/vim-go'
 Plug 'junegunn/vim-easy-align'
 Plug 'ngmy/vim-rubocop'
 Plug 'ntpeters/vim-better-whitespace'
