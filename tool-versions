@@ -7,3 +7,6 @@ terraform 0.14.0
 postgres 11.8
 python 3.8.5
 java openjdk-15
+velero v1.5.2
+helm 3.4.2
+linkerd edge-20.12.4
