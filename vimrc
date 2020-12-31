@@ -126,3 +126,6 @@ nnoremap gdl :diffget //3<CR>
 
 " Golang autoimport on save
 let g:go_fmt_command = "goimports"
+
+" Terraform autofmt on save
+let g:terraform_fmt_on_save=1
