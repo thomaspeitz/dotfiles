@@ -34,7 +34,7 @@ filetype plugin indent on
 
 " FZF
 nnoremap <silent> <leader>t :FZF<CR>
-nnoremap <silent> <leader>g :call fzf#run({'source': 'git ls-files', 'sink': 'e', 'window': { 'width': 0.9, 'height': 0.6 }})<CR>
+nnoremap <silent> <leader>g :GFiles<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
 " vim-fugitive

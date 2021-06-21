@@ -1,4 +1,4 @@
-PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info)$(kube_prompt_info) $(git_prompt_info) [%f '
+PROMPT='%F{green}%2c%F{blue}$(aws_prompt_info)$(kube_prompt_info) $(git_prompt_info) %f'
 RPROMPT='%F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
 
 if [ "$SHOW_TWITTER_PROMPT" != false ]; then
@@ -18,4 +18,12 @@ function aws_prompt_info() {
 function kube_prompt_info() {
   [[ -z $CURRENT_CLUSTER$NEW_CLUSTER ]] && return
   echo " (${CURRENT_CLUSTER} | ${NEW_CLUSTER})"
+}
+
+function spanish_prompt_info() {
+  cat ~/.spanish-words |head -n 40 |sort -R |head -n 1 | awk 'BEGIN{ FS="—" } {print "%F{blue}" $2 "\t\t\t\t\t\t\t%F{white}" $1}'
+}
+
+function prompt_end() {
+ print -n "\n[%f "
 }

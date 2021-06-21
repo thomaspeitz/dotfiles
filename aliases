@@ -11,9 +11,14 @@ alias tfp="terraform plan -out .plan"
 alias tfa="terraform apply .plan"
 alias tfi="terraform init"
 
+alias hs="HELM_DRIVER=configmap helm --kube-context staging"
+alias hp="HELM_DRIVER=configmap helm --kube-context production"
+alias hi="HELM_DRIVER=configmap helm --kube-context infra"
+alias ht="helm --kube-context thomas"
+
 for kubectl in k k2
 do
-  for c in staging production infra thomas logging experiment minikube
+  for c in staging production infra thomas logging experiment minikube cilium
   do
     if [ $kubectl = "k2" ]
     then
@@ -22,7 +27,7 @@ do
 
     alias ${kubectl}${c:0:1}="kubectl --context ${c}"
 
-    for ns in default monitoring kube-system "nginx-ingress" oauth "cert-manager" velero linkerd
+    for ns in default monitoring kube-system "nginx-ingress" "ingress-nginx" oauth "cert-manager" velero linkerd
     do
       shortcut=""
       namespace=""
@@ -40,18 +45,18 @@ do
       alias ${kubectl}${c:0:1}${shortcut}e="kubectl --context ${c} $namespace exec -it"
       alias ${kubectl}${c:0:1}${shortcut}p="kubectl --context ${c} $namespace port-forward"
       alias ${kubectl}${c:0:1}${shortcut}gc="kubectl --context ${c} $namespace get certs -A"
-      alias ${kubectl}${c:0:1}${shortcut}gn="kubectl --context ${c} $namespace get nodes"
+      alias ${kubectl}${c:0:1}${shortcut}gn="kubectl --context ${c} $namespace get nodes --sort-by=.metadata.creationTimestamp"
     done
   done
 done
 
 alias kt="kubectl --context thomas"
 
-cortex () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=cortex-injixo -o jsonpath="{.items[].metadata.name}") -c cortex-injixo bundle exec rails c }
+cortex () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=cortex-injixo -o jsonpath="{.items[].metadata.name}") -c cortex-injixo bash }
 
 support () { echo "WATCH OUT - YOU ARE ON $1";kubectl --context $1 exec -it $(kubectl --context $1 get pods -l name=support -o jsonpath="{.items[].metadata.name}") -c support bundle exec rails c }
 
-alias kubesec-encrypt="kubesec encrypt --key=75B240BE8E2FB53C7DCA4CF478711674974C8F23 --key=5E0832A41DCD0FB11C07EF2F9E58C64809FA6916"
+alias kubesec-encrypt="kubesec encrypt --key=75B240BE8E2FB53C7DCA4CF478711674974C8F23 --key=5E0832A41DCD0FB11C07EF2F9E58C64809FA6916 --key=1576761423618B4F3A873455B721D0C47C4588AC"
 
 alias kubesec-encrypt-private="kubesec encrypt --key=75B240BE8E2FB53C7DCA4CF478711674974C8F23"
 

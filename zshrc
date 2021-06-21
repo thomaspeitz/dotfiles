@@ -3,7 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 DISABLE_CORRECTION="true"
 ZSH_THEME="thomas-nanotech"
 SHOW_AWS_PROMPT=false
-SHOW_TWITTER_PROMPT=true
+SHOW_TWITTER_PROMPT=false
 plugins=(git gpg-agent aws kubectl history-substring-search)
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=23"
@@ -55,3 +55,5 @@ if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/User
 if [ -f '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/tpeitz/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 source ~/.logclirc
+
+export PATH=$PATH:/Users/tpeitz/.linkerd2/bin
